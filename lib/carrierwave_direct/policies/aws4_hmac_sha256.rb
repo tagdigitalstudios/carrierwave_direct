@@ -38,7 +38,7 @@ module CarrierWaveDirect
         if uploader.use_action_status
           conditions << {"success_action_status" => uploader.success_action_status}
         else
-          conditions << {"success_action_redirect" => uploader.success_action_redirect}
+          conditions << ["starts-with", "success_action_redirect", uploader.success_action_redirect]
         end
 
         conditions << ["content-length-range", options[:min_file_size], options[:max_file_size]]
